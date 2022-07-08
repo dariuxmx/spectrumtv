@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
   </PropertyGroup>
 
@@ -31,5 +31,10 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Pages\" />
     <Folder Include="PageModels\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpectrumTV.Models\SpectrumTV.Models.csproj" />
+    <ProjectReference Include="..\SpectrumTV.Interfaces\SpectrumTV.Interfaces.csproj" />
+    <ProjectReference Include="..\SpectrumTV.Services\SpectrumTV.Services.csproj" />
   </ItemGroup>
 </Project>
