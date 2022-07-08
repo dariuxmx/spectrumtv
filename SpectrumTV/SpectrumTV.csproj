@@ -13,5 +13,23 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Autofac" Version="6.4.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Autofac" />
+    <None Remove="Bootstrap\" />
+    <None Remove="PageModels\" />
+    <None Remove="Services\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Pages\" />
+    <None Remove="PageModels\Base\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Bootstrap\" />
+    <Folder Include="PageModels\" />
+    <Folder Include="Services\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Pages\" />
+    <Folder Include="PageModels\Base\" />
   </ItemGroup>
 </Project>
