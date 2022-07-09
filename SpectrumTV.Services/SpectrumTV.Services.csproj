@@ -6,9 +6,13 @@
 
   <ItemGroup>
     <None Remove="Logging\" />
+    <None Remove="Services\" />
+    <None Remove="ApiService\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logging\" />
+    <Folder Include="Movies\" />
+    <Folder Include="ApiService\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SpectrumTV.Models\SpectrumTV.Models.csproj" />
