@@ -8,10 +8,12 @@
     <None Remove="Exceptions\" />
     <None Remove="Newtonsoft.Json" />
     <None Remove="Movie\" />
+    <None Remove="Responses\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Exceptions\" />
     <Folder Include="Movies\" />
+    <Folder Include="Responses\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
