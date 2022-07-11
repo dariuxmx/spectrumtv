@@ -33,8 +33,9 @@
     <Folder Include="PageModels\Base\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SpectrumTV.Services\SpectrumTV.Services.csproj" />
+    <ProjectReference Include="..\SpectrumTV.Services.Implementation\SpectrumTV.Services.Implementation.csproj" />
     <ProjectReference Include="..\SpectrumTV.Models\SpectrumTV.Models.csproj" />
     <ProjectReference Include="..\SpectrumTV.Interfaces\SpectrumTV.Interfaces.csproj" />
-    <ProjectReference Include="..\SpectrumTV.Services\SpectrumTV.Services.csproj" />
   </ItemGroup>
 </Project>

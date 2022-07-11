@@ -12,8 +12,8 @@ namespace SpectrumTV.Services.ApiService
 {
     public class ApiService : IApiService
     {
-
         private readonly JsonSerializerSettings _serializerSettings;
+
         public ApiService()
         {
             _serializerSettings = new JsonSerializerSettings

@@ -2,8 +2,35 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="SpectrumTV.Pages.HomePage">
+    x:Class="SpectrumTV.Pages.HomePage"
+    Title="Spectrum TV">
     <ContentPage.Content>
-        
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="230" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--Cover-->
+            <StackLayout
+                Grid.Row="1"
+                Background="GreenYellow"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Margin="0"
+                Padding="0">
+                <ScrollView
+                    Background="cyan"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Label
+                        Text="MOVIE LIST HERE"/>
+                </ScrollView>
+            </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

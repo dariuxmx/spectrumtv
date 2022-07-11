@@ -3,7 +3,6 @@ using Autofac;
 using System.Collections.Generic;
 using SpectrumTV.Models.Exceptions;
 using SpectrumTV.PageModels;
-using SpectrumTV.Services;
 using Xamarin.Forms;
 
 namespace SpectrumTV.Services
