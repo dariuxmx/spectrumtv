@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using SpectrumTV.PageModels;
 
-namespace SpectrumTV.Bootstrap
+namespace SpectrumTV.Modules
 {
     public class PageModelModule : Module
     {

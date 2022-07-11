@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace SpectrumTV.Bootstrap
+namespace SpectrumTV.Modules
 {
     public class ViewModule : Module
     {

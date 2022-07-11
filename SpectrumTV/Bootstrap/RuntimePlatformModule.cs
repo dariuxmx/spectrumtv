@@ -1,6 +1,6 @@
 ﻿using Autofac;
 
-namespace SpectrumTV.Bootstrap
+namespace SpectrumTV.Modules
 {
     public abstract class RuntimePlatformModule : Module { }
 }

@@ -1,5 +1,6 @@
 ﻿
 using Autofac;
+using SpectrumTV.Modules;
 using SpectrumTV.PageModels;
 using SpectrumTV.Pages;
 using SpectrumTV.Services;

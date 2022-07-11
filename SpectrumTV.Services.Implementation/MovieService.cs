@@ -5,7 +5,6 @@ using SpectrumTV.Models;
 using SpectrumTV.Models.Movie;
 using SpectrumTV.Models.Responses;
 using SpectrumTV.Services.ApiService;
-using SpectrumTV.Services.Services;
 
 namespace SpectrumTV.Services.Implementation
 {
@@ -19,16 +18,16 @@ namespace SpectrumTV.Services.Implementation
             _apiService = apiService;
         }
 
-        public async Task<SearchResultsResponse<Movie>> GetMoviesTopRated(int pageNumber = 1)
+        public async Task<SearchResultsResponse<Movie>> GetMoviesTopRated(string language = "en", int pageNumber = 1)
         {
-            string uri = $"{AppConfig.BaseUrl}movie/top_rated?api_key={AppConfig.ApiKey}";
+            string uri = $"{AppConfig.BaseUrl}movie/top_rated?api_key={AppConfig.ApiKey}&language={language}";
 
             SearchResultsResponse<Movie> response = await _apiService.GetAsync<SearchResultsResponse<Movie>>(uri);
 
             return response;
         }
 
-        public Task<Movie> FindMovieWithId(int movieId)
+        public Task<Movie> FindMovieWithId(int movieId, string language = "en")
         {
             throw new NotImplementedException();
         }
