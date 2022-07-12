@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SpectrumTV.Templates.MovieItemView"
+    BackgroundColor="White"
+    RowSpacing="0"
+    ColumnSpacing="0">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer Command="{Binding TappedCommand}" />
+    </Grid.GestureRecognizers>
+
+    <StackLayout
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand"
+        Spacing="0">
+        <Label
+            HorizontalOptions="StartAndExpand"
+            VerticalOptions="StartAndExpand"
+            TextColor="Black"
+            Text="{Binding MovieTitle}"/>
+
+    </StackLayout>
+</Grid>

@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:SpectrumTV.Templates"
     x:Class="SpectrumTV.Pages.HomePage"
+    xmlns:effects="clr-namespace:SpectrumTV.Effects"
+    xmlns:iosSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    iosSpecific:Page.UseSafeArea="True"
+    Background="white"
     Title="Spectrum TV">
     <ContentPage.Content>
         <Grid
@@ -11,26 +15,94 @@
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" /> <!-- Safe Area -->
                 <RowDefinition Height="230" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
+            <!-- Safe Area -->
+            <ContentView
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                HeightRequest="30"
+                BackgroundColor="Transparent">
+                <ContentView.Effects>
+                    <effects:SafeAreaEffect Flags="Top" />
+                </ContentView.Effects>
+            </ContentView>
+
+
+
             <!--Cover-->
-            <StackLayout
+            <Label
                 Grid.Row="1"
-                Background="GreenYellow"
+                Margin="15,0,0,0"
+                Text="Upcoming"/>
+
+            <!--Title Section-->
+            <Label
+                Grid.Row="2"
+                Margin="15,0,0,0"
+                Text="Top Rated Movies"/>
+
+            <CollectionView
+                Grid.Row="3"
+                x:Name="CollectionList"
+                ItemsSource="{Binding ResultsTopMoviesRated, Mode=TwoWay}"
+                Margin="15"
+                VerticalOptions="FillAndExpand"
+                BackgroundColor="LightSlateGray"
+                HeightRequest="190">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Horizontal"
+                        HorizontalItemSpacing="20"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <views:MovieItemView
+                            Background="red"/>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+             </CollectionView>
+            <!--<ScrollView
+                Grid.Row="1"
                 VerticalOptions="FillAndExpand"
                 HorizontalOptions="FillAndExpand"
-                Margin="0"
-                Padding="0">
-                <ScrollView
-                    Background="cyan"
-                    HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand">
-                    <Label
-                        Text="MOVIE LIST HERE"/>
-                </ScrollView>
-            </StackLayout>
-        </Grid>
+                Background="GreenYellow">
+                <FlexLayout
+                    BindableLayout.ItemsSource="{Binding ResultsTopMoviesRated}"
+                    Wrap="Wrap"
+                    Direction="Row"
+                    JustifyContent="SpaceBetween"
+                    AlignItems="Center"                            
+                    AlignContent="Center"
+                    Padding="20,0">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Orientation="Horizontal">
+                                <views:MovieItemView
+                                    WidthRequest="120"
+                                    HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+            </ScrollView>-->
+
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator
+                Grid.Row="3"
+                Grid.Column="0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Color="DarkGray"
+                IsRunning="{Binding IsBusy}">
+            </ActivityIndicator>
+    </Grid>
     </ContentPage.Content>
 </ContentPage>

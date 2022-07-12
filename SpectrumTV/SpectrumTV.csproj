@@ -23,6 +23,8 @@
     <None Remove="ViewModels\" />
     <None Remove="Pages\" />
     <None Remove="PageModels\Base\" />
+    <None Remove="Templates\" />
+    <None Remove="Effects\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Bootstrap\" />
@@ -31,6 +33,8 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Pages\" />
     <Folder Include="PageModels\Base\" />
+    <Folder Include="Templates\" />
+    <Folder Include="Effects\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SpectrumTV.Services\SpectrumTV.Services.csproj" />
