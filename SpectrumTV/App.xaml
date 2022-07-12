@@ -1,8 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SpectrumTV.App">
+<Application
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:SpectrumTV.Converters"
+    x:Class="SpectrumTV.App">
     <Application.Resources>
+
+        <!-- Theme -->
+        <Color x:Key="PrimaryColor">#0099d8</Color>
+        <Color x:Key="SecondaryColor">#001b33</Color>
+        <Color x:Key="BlackColor">#333</Color>
+
+        <!--Converters-->
+        <converters:StringToUppercaseConverter x:Key="StringToUppercaseConverter" />
+        <converters:MovieCoverConverter x:Key="MovieCoverConverter" />
 
     </Application.Resources>
 </Application>

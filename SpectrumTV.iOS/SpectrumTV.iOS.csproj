@@ -69,6 +69,7 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="iOSModule.cs" />
+    <Compile Include="Effects\SafeAreaEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -141,5 +142,8 @@
       <Project>{BD707EF4-2A3F-4F0D-B281-2F7B00E07D56}</Project>
       <Name>SpectrumTV.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Effects\" />
   </ItemGroup>
 </Project>
