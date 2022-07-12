@@ -20,7 +20,8 @@ namespace SpectrumTV
 
             // Setup the main page with navigation context container
             var navigationService = _container.Resolve<NavigationContext>();
-            navigationService.SetMainPage<HomePageModel>();
+            navigationService.SetMainPageNavigation<HomePageModel>();
+            navigationService.SetNavigationBarProperties();
 
             // Set home page
             // MainPage = new MainPage();

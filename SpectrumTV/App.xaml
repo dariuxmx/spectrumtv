@@ -6,7 +6,7 @@
     x:Class="SpectrumTV.App">
     <Application.Resources>
 
-        <!-- Theme -->
+        <!-- Theme Colors -->
         <Color x:Key="PrimaryColor">#0099d8</Color>
         <Color x:Key="SecondaryColor">#001b33</Color>
         <Color x:Key="BlackColor">#333</Color>

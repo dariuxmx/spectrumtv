@@ -9,6 +9,7 @@ namespace SpectrumTV.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            // Return the complete url in each case
             if (parameter != null && parameter.Equals("Backdrop"))
             {
                 return string.Format("{0}{1}", AppConfig.BackdropImageUrl, value);

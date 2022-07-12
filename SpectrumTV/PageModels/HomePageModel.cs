@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using SpectrumTV.Models.Movie;
-using SpectrumTV.Models.Responses;
 using SpectrumTV.Services;
 using SpectrumTV.ViewModels;
 
@@ -12,7 +11,6 @@ namespace SpectrumTV.PageModels
 {
     public class HomePageModel : BasePageModel
     {
-        //private Movie _movieModel;
         private readonly IMovieService _movieService;
 
         private List<MovieItemViewModel> _resultTopMoviesRated;
@@ -22,17 +20,7 @@ namespace SpectrumTV.PageModels
             set => SetProperty(ref _resultTopMoviesRated, value);
         }
 
-        //private ObservableCollection<Movie> _topRatedMovieCollection;
-        //public ObservableCollection<Movie> TopRatedMovieCollection
-        //{
-        //    get { return _topRatedMovieCollection; }
-        //    set
-        //    {
-        //        _topRatedMovieCollection = value;
-        //        OnPropertyChanged();
-        //        //SetProperty(ref _topRatedMovieCollection, value);
-        //    }
-        //}
+        public AsyncCommand ShowDetailsCommand { get; private set; }
 
         public HomePageModel(
             NavigationContext navigationContext,
@@ -42,6 +30,7 @@ namespace SpectrumTV.PageModels
         {
             _movieService = movieService;
 
+            ShowDetailsCommand = new AsyncCommand(Perform_View_Movie_Details);
             IsBusy = true;
         }
 
@@ -60,31 +49,18 @@ namespace SpectrumTV.PageModels
 
             if (topRatedMovies?.Count > 0)
             {
-                ResultsTopMoviesRated = topRatedMovies.Select(topMovie => new MovieItemViewModel(topMovie)).ToList();
+                ResultsTopMoviesRated = topRatedMovies.Select(topMovie => new MovieItemViewModel(topMovie, new AsyncCommand(Perform_View_Movie_Details))).ToList();
                 IsBusy = false;
-                //Movie movieItem = new Movie();
-                //foreach (var movie in movieList.Results)
-                //{
-                //    movieItem.OriginalTitle = movie.OriginalTitle;
-                //    Console.WriteLine("MOVIE ====> {0}", movieItem.OriginalTitle);
+                
+            }            
+        }
 
-                //}
-
-                //Movie movieItem = new Movie();
-                //foreach (var movie in movieList.Results)
-                //{
-                //    movieItem.OriginalTitle = movie.OriginalTitle;
-                //    Console.WriteLine("MOVIE ====> {0}", movieItem.OriginalTitle);
-
-                //}
-
-
-                //ResultTopMoviesRated = new ObservableCollection<Movie>(movieList.Results.Take(10));
-            }
-            
-            //_topRatedMovieCollection = new ObservableCollection<Movie>(movieList.Results.Take(10));
-
-            
+        private async Task Perform_View_Movie_Details(object sender, CancellationToken cancellationToken)
+        {
+            await NavigationContext.PushAsync<MovieDetailsPageModel>(pageModel =>
+            {
+                pageModel.CurrentMovie = (MovieItemViewModel)sender;
+            });
         }
     }
 }
