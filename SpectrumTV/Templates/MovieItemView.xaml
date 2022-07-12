@@ -20,12 +20,27 @@
     <StackLayout
         HorizontalOptions="FillAndExpand"
         VerticalOptions="FillAndExpand"
+        Background="Transparent"
+        Padding="15,0,0,0"
         Spacing="0">
+        <Frame
+            CornerRadius="7"
+            HasShadow="False"
+            IsClippedToBounds="True"
+            Padding="0">
+            <Image
+                WidthRequest="200"
+                HeightRequest="150"
+                Source="{Binding MovieCover, Converter={StaticResource MovieCoverConverter}, ConverterParameter=Backdrop}"
+                Aspect="AspectFill"/>
+        </Frame>
         <Label
             HorizontalOptions="StartAndExpand"
             VerticalOptions="StartAndExpand"
             TextColor="Black"
-            Text="{Binding MovieTitle}"/>
+            Margin="5,10"
+            FontSize="13"
+            Text="{Binding MovieTitle, Converter={StaticResource StringToUppercaseConverter}}"/>
 
     </StackLayout>
 </Grid>

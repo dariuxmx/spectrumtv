@@ -8,7 +8,9 @@ namespace SpectrumTV.ViewModels
     public class MovieItemViewModel : BaseViewModel
     {
         public Movie Movie { get; private set; }
+
         public string MovieTitle { get; private set; }
+        public string MovieCover { get; private set; }
 
         private bool _isSelected;
         public bool IsSelected
@@ -31,7 +33,8 @@ namespace SpectrumTV.ViewModels
             Movie = movie;
             TapCommand = new Command(Perform_Tap);
 
-            MovieTitle = movie.OriginalTitle;
+            MovieTitle = movie.Title;
+            MovieCover = movie.BackdropPath;
         }
 
         private async void Perform_Tap(object obj)

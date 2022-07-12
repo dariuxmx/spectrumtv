@@ -34,16 +34,20 @@
                 </ContentView.Effects>
             </ContentView>
 
-
-
             <!--Cover-->
             <Label
                 Grid.Row="1"
                 Margin="15,0,0,0"
+                FontSize="30"
+                FontAttributes="Bold"
+                TextColor="{DynamicResource PrimaryColor}"
                 Text="Upcoming"/>
 
             <!--Title Section-->
             <Label
+                FontSize="30"
+                FontAttributes="Bold"
+                TextColor="{DynamicResource PrimaryColor}"
                 Grid.Row="2"
                 Margin="15,0,0,0"
                 Text="Top Rated Movies"/>
@@ -52,19 +56,18 @@
                 Grid.Row="3"
                 x:Name="CollectionList"
                 ItemsSource="{Binding ResultsTopMoviesRated, Mode=TwoWay}"
-                Margin="15"
+                Margin="0,15"
                 VerticalOptions="FillAndExpand"
-                BackgroundColor="LightSlateGray"
-                HeightRequest="190">
+                Background="Transparent"
+                HeightRequest="200">
                 <CollectionView.ItemsLayout>
                     <GridItemsLayout
                         Orientation="Horizontal"
-                        HorizontalItemSpacing="20"/>
+                        HorizontalItemSpacing="10"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <views:MovieItemView
-                            Background="red"/>
+                        <views:MovieItemView />
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
              </CollectionView>
@@ -92,7 +95,6 @@
                     </BindableLayout.ItemTemplate>
                 </FlexLayout>
             </ScrollView>-->
-
 
             <!-- Loading Indicator -->
             <ActivityIndicator
