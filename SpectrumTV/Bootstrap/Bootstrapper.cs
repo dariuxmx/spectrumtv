@@ -28,14 +28,17 @@ namespace SpectrumTV.Bootstrap
 
             IContainer container = builder.Build();
 
+            // Create the AutoFac pageFactory
             var pageFactory = container.Resolve<PageFactory>();
 
             RegisterPages(pageFactory);
+
             return container;
         }
 
         private static void RegisterPages(PageFactory pageFactory)
         {
+            // All pages with their pageModel should be register here
             pageFactory.Register<HomePageModel, HomePage>();
             pageFactory.Register<MovieDetailsPageModel, MovieDetailsPage>();
         }

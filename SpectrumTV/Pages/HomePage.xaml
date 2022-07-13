@@ -10,118 +10,136 @@
     iosSpecific:Page.UseSafeArea="True"
     Background="white"
     Title="Spectrum TV">
-    <ContentPage.Content>
-        <Grid
-            RowSpacing="0"
-            ColumnSpacing="0"
+    <StackLayout>
+        <ScrollView
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" /> <!-- Safe Area -->
-                <RowDefinition Height="60" /> <!-- Logo -->
-                <RowDefinition Height="230" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <!-- Safe Area -->
-            <ContentView
-                Grid.Row="0"
-                Grid.Column="0"
+            <Grid
+                RowSpacing="0"
+                ColumnSpacing="0"
                 HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand"
-                HeightRequest="30"
-                BackgroundColor="Transparent">
-                <ContentView.Effects>
-                    <effects:SafeAreaEffect Flags="Top" />
-                </ContentView.Effects>
-            </ContentView>
+                VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" /> <!-- Safe Area -->
+                    <RowDefinition Height="60" /> <!-- Logo -->
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="230" /> <!--Cover-->
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-            <StackLayout
-                Grid.Row="1"
-                Padding="0">
-                <AbsoluteLayout
-                    Margin="5,0">
-                    <Image
-                        x:Name="_logo"
-                        Aspect="AspectFit"
-                        WidthRequest="170"
-                        HeightRequest="70"
-                        Source="{x:Static link:AppImages.LogoNav}" />
-                </AbsoluteLayout>
-            </StackLayout>
+                <!-- Safe Area -->
+                <ContentView
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    HeightRequest="30"
+                    BackgroundColor="Transparent">
+                    <ContentView.Effects>
+                        <effects:SafeAreaEffect Flags="Top" />
+                    </ContentView.Effects>
+                </ContentView>
 
-            <!--Cover-->
-            <Label
-                Grid.Row="2"
-                Margin="15,20,0,0"
-                FontSize="30"
-                FontAttributes="Bold"
-                TextColor="{DynamicResource PrimaryColor}"
-                Text="Upcoming"/>
+                <StackLayout
+                    Grid.Row="1"
+                    Padding="0">
+                    <AbsoluteLayout
+                        Margin="5,0">
+                        <Image
+                            x:Name="_logo"
+                            Aspect="AspectFit"
+                            WidthRequest="170"
+                            HeightRequest="70"
+                            Source="{x:Static link:AppImages.LogoNav}" />
+                    </AbsoluteLayout>
+                </StackLayout>
 
-            <!--Title Section-->
-            <Label
-                Grid.Row="3"
-                FontSize="30"
-                FontAttributes="Bold"
-                TextColor="{DynamicResource PrimaryColor}"
-                Margin="15,0,0,0"
-                Text="Top Rated Movies"/>
+                <!--Cover-->
+                <Label
+                    Grid.Row="2"
+                    Margin="15,20,0,0"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="{DynamicResource PrimaryColor}"
+                    Text="Trending"/>
 
-            <CollectionView
-                Grid.Row="4"
-                x:Name="CollectionList"
-                ItemsSource="{Binding ResultsTopMoviesRated, Mode=TwoWay}"
-                Margin="0,15"
-                VerticalOptions="FillAndExpand"
-                Background="Transparent"
-                HeightRequest="200">
-                <CollectionView.ItemsLayout>
-                    <GridItemsLayout
-                        Orientation="Horizontal"
-                        HorizontalItemSpacing="10"/>
-                </CollectionView.ItemsLayout>
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <views:MovieItemView />
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-             </CollectionView>
-            <!--<ScrollView
-                Grid.Row="1"
-                VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand"
-                Background="GreenYellow">
-                <FlexLayout
-                    BindableLayout.ItemsSource="{Binding ResultsTopMoviesRated}"
-                    Wrap="Wrap"
-                    Direction="Row"
-                    JustifyContent="SpaceBetween"
-                    AlignItems="Center"                            
-                    AlignContent="Center"
-                    Padding="20,0">
-                    <BindableLayout.ItemTemplate>
+                <Image
+                    Grid.Row="3"
+                    Margin="0, 15,0,20"
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="600"
+                    Source="{Binding MovieCoverTrend}"
+                    Aspect="AspectFill" />
+
+                <!--Upcoming Movies Section-->
+                <Label
+                    Grid.Row="4"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="{DynamicResource PrimaryColor}"
+                    Margin="15,0,0,0"
+                    Text="Upcoming Movies"/>
+
+                <CollectionView
+                    Grid.Row="5"
+                    ItemsSource="{Binding ResultsUpcomingMovies, Mode=TwoWay}"
+                    Margin="0,15"
+                    VerticalOptions="FillAndExpand"
+                    Background="Transparent"
+                    HeightRequest="200">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            Orientation="Horizontal"
+                            HorizontalItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <StackLayout Orientation="Horizontal">
-                                <views:MovieItemView
-                                    WidthRequest="120"
-                                    HorizontalOptions="CenterAndExpand"/>
-                            </StackLayout>
+                            <views:MovieItemView />
                         </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </FlexLayout>
-            </ScrollView>-->
+                    </CollectionView.ItemTemplate>
+                 </CollectionView>
 
-            <!-- Loading Indicator -->
-            <ActivityIndicator
-                Grid.Row="3"
-                Grid.Column="0"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                Color="DarkGray"
-                IsRunning="{Binding IsBusy}">
-            </ActivityIndicator>
-    </Grid>
-    </ContentPage.Content>
+                <!--Top Rates Movies Section-->
+                <Label
+                    Grid.Row="6"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="{DynamicResource PrimaryColor}"
+                    Margin="15,0,0,0"
+                    Text="Top Rated Movies"/>
+
+                <CollectionView
+                    Grid.Row="7"
+                    x:Name="CollectionList"
+                    ItemsSource="{Binding ResultsTopMoviesRated, Mode=TwoWay}"
+                    Margin="0,15"
+                    VerticalOptions="FillAndExpand"
+                    Background="Transparent"
+                    HeightRequest="200">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout
+                            Orientation="Horizontal"
+                            HorizontalItemSpacing="10"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <views:MovieItemView />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                 </CollectionView>
+
+                <!-- Loading Indicator -->
+                <ActivityIndicator
+                    Grid.Column="0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Color="DarkGray"
+                    IsRunning="{Binding IsBusy}">
+                </ActivityIndicator>
+            </Grid>
+        </ScrollView>
+    </StackLayout>
 </ContentPage>

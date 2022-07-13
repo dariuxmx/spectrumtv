@@ -326,48 +326,6 @@ namespace SpectrumTV.Services
             }
         }
 
-        //public async Task<TPageModel> DisplayAlertAsync<TPageModel>(Action<TPageModel> init = null) where TPageModel : AlertPageModel
-        //{
-        //    TPageModel pageModel = null;
-
-        //    if (_currentPage?.Navigation != null)
-        //    {
-        //        Page alertPage = _pageFactory.Resolve(out pageModel, init);
-
-        //        pageModel.NavigationContext.IsModal = true;
-
-        //        AttachPageDisposalHandler(alertPage);
-
-        //        await _currentPage.Navigation.PushModalAsync(alertPage, false);
-        //    }
-        //    else
-        //    {
-        //        _logger.Debug(this, $"Navigation not found for page '{_currentPage}'");
-        //    }
-
-        //    return pageModel;
-        //}
-
-        //public async Task<TPageModel> DisplayAlertAsync<TPageModel>(TPageModel pageModel) where TPageModel : AlertPageModel
-        //{
-        //    if (_currentPage?.Navigation != null)
-        //    {
-        //        Page alertPage = _pageFactory.Resolve(pageModel);
-
-        //        pageModel.NavigationContext.IsModal = true;
-
-        //        AttachPageDisposalHandler(alertPage);
-
-        //        await _currentPage.Navigation.PushModalAsync(alertPage, false);
-        //    }
-        //    else
-        //    {
-        //        _logger.Debug(this, $"Navigation not found for page '{_currentPage}'");
-        //    }
-
-        //    return pageModel;
-        //}
-
         public Task HideAlertAsync()
         {
             return PopModalAsync(false);

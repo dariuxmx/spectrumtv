@@ -5,6 +5,11 @@ using Xamarin.Forms;
 
 namespace SpectrumTV.Converters
 {
+    /// <summary>
+    /// Use this converter to build the complete url for cover movies:
+    /// Example: https://image.tmdb.org/t/p/w1280/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg
+    /// </summary>
+
     public class MovieCoverConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

@@ -6,6 +6,11 @@ namespace SpectrumTV.PageModels
 {
     public abstract class BasePageModel : BaseViewModel
     {
+        /// <summary>
+        /// Base view model with some specific binding properties
+        /// and optional methods to override
+        /// </summary>
+
         public NavigationContext NavigationContext { get; private set; }
 
         private bool _hasAppeared;

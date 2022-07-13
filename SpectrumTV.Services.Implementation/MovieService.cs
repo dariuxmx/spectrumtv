@@ -10,7 +10,11 @@ namespace SpectrumTV.Services.Implementation
 {
     public class MovieService : IMovieService
     {
-
+        /// <summary>
+        /// The MovieDB org api calls:
+        /// Top rated and upcoming movies
+        /// </summary>
+        /// 
         private readonly IApiService _apiService;
 
         public MovieService(IApiService apiService)
@@ -18,18 +22,28 @@ namespace SpectrumTV.Services.Implementation
             _apiService = apiService;
         }
 
-        public async Task<SearchResultsResponse<Movie>> GetMoviesTopRated(string language = "en", int pageNumber = 1)
+        public async Task<SearchResultsResponse<Movie>> GetTopRatedMovies(string language="en", int pageNumber = 1)
         {
+            // Build the complete url with parameters coming from AppConfig file
             string uri = $"{AppConfig.BaseUrl}movie/top_rated?api_key={AppConfig.ApiKey}&language={language}";
 
+            // Store the results 
             SearchResultsResponse<Movie> response = await _apiService.GetAsync<SearchResultsResponse<Movie>>(uri);
 
+            // Return the results
             return response;
         }
 
-        public Task<Movie> FindMovieWithId(int movieId, string language = "en")
+        public async Task<SearchResultsResponse<Movie>> GetUpcomingMovies(string language = "en", int pageNumber = 1)
         {
-            throw new NotImplementedException();
+            // Build the complete url with parameters coming from AppConfig file
+            string uri = $"{AppConfig.BaseUrl}movie/upcoming?api_key={AppConfig.ApiKey}&language={language}";
+
+            // Store the results 
+            SearchResultsResponse<Movie> response = await _apiService.GetAsync<SearchResultsResponse<Movie>>(uri);
+
+            // Return the results
+            return response;
         }
 
     }

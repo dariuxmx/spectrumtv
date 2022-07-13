@@ -6,6 +6,7 @@ namespace SpectrumTV.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
+            // All views should be register here
             base.Load(builder);
         }
     }
