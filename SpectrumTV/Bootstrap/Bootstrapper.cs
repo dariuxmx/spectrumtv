@@ -31,13 +31,13 @@ namespace SpectrumTV.Bootstrap
             var pageFactory = container.Resolve<PageFactory>();
 
             RegisterPages(pageFactory);
-
             return container;
         }
 
         private static void RegisterPages(PageFactory pageFactory)
         {
             pageFactory.Register<HomePageModel, HomePage>();
+            pageFactory.Register<MovieDetailsPageModel, MovieDetailsPage>();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using SpectrumTV.Models.Movie;
 using Xamarin.Forms;
 
@@ -12,34 +13,22 @@ namespace SpectrumTV.ViewModels
         public string MovieTitle { get; private set; }
         public string MovieCover { get; private set; }
 
-        private bool _isSelected;
-        public bool IsSelected
-        {
-            get => _isSelected;
-            set
-            {
-                if (SetProperty(ref _isSelected, value))
-                {
-                    SelectionChangedCommand?.Execute(this);
-                }
-            }
-        }
-
-        public Command TapCommand { get; private set; }
+        public ICommand TapCommand { get; private set; }
         public Command SelectionChangedCommand { get; set; }
 
-        public MovieItemViewModel(Movie movie)
+        public MovieItemViewModel(Movie movie, ICommand tapCommand)
         {
             Movie = movie;
-            TapCommand = new Command(Perform_Tap);
-
             MovieTitle = movie.Title;
             MovieCover = movie.BackdropPath;
+
+            TapCommand = tapCommand;
+            //TapCommand = new Command(Perform_Tap);
         }
 
-        private async void Perform_Tap(object obj)
-        {
-            IsSelected = !IsSelected;
-        }
+        //private async void Perform_Tap(object obj)
+        //{
+        //    Console.WriteLine("=== TAP MOVIE ITEM === {0}", obj);   
+        //}
     }
 }

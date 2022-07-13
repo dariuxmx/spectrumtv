@@ -10,6 +10,7 @@ namespace SpectrumTV.Modules
             base.Load(builder);
 
             builder.RegisterType<HomePageModel>();
+            builder.RegisterType<MovieDetailsPageModel>();
         }
     }
 }

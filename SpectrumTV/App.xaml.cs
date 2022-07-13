@@ -22,8 +22,6 @@ namespace SpectrumTV
             var navigationService = _container.Resolve<NavigationContext>();
             navigationService.SetMainPage<HomePageModel>();
 
-            // Set home page
-            // MainPage = new MainPage();
         }
 
         protected override void OnStart()
