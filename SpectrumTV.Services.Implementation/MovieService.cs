@@ -34,7 +34,7 @@ namespace SpectrumTV.Services.Implementation
             return response;
         }
 
-        public async Task<SearchResultsResponse<Movie>> GetUpcomingMovies(string language = "en", int pageNumber = 1)
+        public async Task<SearchResultsResponse<Movie>> GetUpcomingMovies(string language="en", int pageNumber = 1)
         {
             // Build the complete url with parameters coming from AppConfig file
             string uri = $"{AppConfig.BaseUrl}movie/upcoming?api_key={AppConfig.ApiKey}&language={language}";
@@ -46,5 +46,16 @@ namespace SpectrumTV.Services.Implementation
             return response;
         }
 
+        public async Task<SearchResultsResponse<Movie>> SearchMovie(string movieName, string language = "en")
+        {
+            // Build the complete url with parameters coming from AppConfig file and the movie name type by the user
+            string uri = $"{AppConfig.BaseUrl}search/movie?api_key={AppConfig.ApiKey}&query={movieName}&language={language}";
+
+            // Store the results 
+            SearchResultsResponse<Movie> response = await _apiService.GetAsync<SearchResultsResponse<Movie>>(uri);
+
+            // Return the results
+            return response;
+        }
     }
 }

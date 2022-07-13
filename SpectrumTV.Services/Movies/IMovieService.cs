@@ -12,5 +12,6 @@ namespace SpectrumTV.Services
         
         Task<SearchResultsResponse<Movie>> GetTopRatedMovies(string language="en", int pageNumber = 1);
         Task<SearchResultsResponse<Movie>> GetUpcomingMovies(string language = "en", int pageNumber = 1);
+        Task<SearchResultsResponse<Movie>> SearchMovie(string movieName, string language = "en");
     }
 }

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SpectrumTV.Pages.SearchResultsPage"
+    xmlns:views="clr-namespace:SpectrumTV.Templates"
+    xmlns:link="clr-namespace:SpectrumTV"
+    xmlns:effects="clr-namespace:SpectrumTV.Effects"
+    xmlns:iosSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    NavigationPage.HasBackButton="False"
+    iosSpecific:Page.UseSafeArea="False"
+    NavigationPage.HasNavigationBar="False"
+    Background="white">
+    <StackLayout>
+        <!-- Content -->
+        <Grid
+            RowSpacing="0"
+            ColumnSpacing="0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" /> <!--Safe Area-->
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Safe Area -->
+            <ContentView
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                HeightRequest="30"
+                BackgroundColor="Transparent">
+                <ContentView.Effects>
+                    <effects:SafeAreaEffect Flags="Top" />
+                </ContentView.Effects>
+            </ContentView>
+
+            <!-- Search Section -->
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0"
+                Grid.Row="1">
+                <Label
+                    Margin="20,20,20,0"
+                    FontSize="35"
+                    TextColor="{DynamicResource PrimaryColor}"
+                    Text="Search Movies"/>
+
+                <Entry
+                    x:Name="_searchEntry"
+                    HorizontalOptions="FillAndExpand"
+                    Placeholder="Type the name of your movie"
+                    PlaceholderColor="LightGray"
+                    Margin="20,20,20,30"
+                    HeightRequest="40"
+                    Text="{Binding SearchQuery}"
+                    Completed="Entry_Completed"/>
+
+            </StackLayout>
+
+            <!-- Results Section-->
+            <Label
+                Grid.Row="2"
+                FontSize="25"
+                TextColor="{DynamicResource SecondaryColor}"
+                Margin="20,0,0,0"
+                Text="Results"/>
+
+            <CollectionView
+                Grid.Row="3"
+                ItemsSource="{Binding SearchResults, Mode=TwoWay}"
+                Margin="0,25,15,20"
+                VerticalOptions="FillAndExpand"
+                Background="Transparent">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        VerticalItemSpacing="25"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <views:MovieItemView />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            <!-- Close Button -->
+            <Button
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Padding="10"
+                Margin="0,35,0,0"
+                Background="transparent"
+                ImageSource="{x:Static link:AppImages.IconClose}"
+                Command="{Binding CloseCommand}"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
