@@ -9,6 +9,7 @@ namespace SpectrumTV.Modules
         {
             base.Load(builder);
 
+            // All pageModels should be register here
             builder.RegisterType<HomePageModel>();
             builder.RegisterType<MovieDetailsPageModel>();
         }

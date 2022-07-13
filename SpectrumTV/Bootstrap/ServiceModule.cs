@@ -22,6 +22,7 @@ namespace SpectrumTV.Modules
 
         private void RegisterUnconditionalServices(ContainerBuilder builder)
         {
+            // All services should be register here
             builder.RegisterType<PageFactory>().SingleInstance();
             builder.RegisterType<NavigationContext>(); // Instance per page
             builder.RegisterType<ApiService>().As<IApiService>().SingleInstance();

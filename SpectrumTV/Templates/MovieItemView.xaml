@@ -17,6 +17,7 @@
         <TapGestureRecognizer Command="{Binding TapCommand}" CommandParameter="{Binding .}"/>
     </Grid.GestureRecognizers>
 
+    <!--This layout creates the image cover and title movie-->
     <StackLayout
         Grid.Row="0"
         HorizontalOptions="FillAndExpand"

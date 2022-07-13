@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using SpectrumTV.Models.Movie;
 using SpectrumTV.Services;
 using SpectrumTV.ViewModels;
 
@@ -34,20 +31,24 @@ namespace SpectrumTV.PageModels
         }
         #endregion
 
+        #region View Models / Commands
         public MovieItemViewModel CurrentMovie { get; set; }
         public AsyncCommand CloseCommand { get; private set; }
+        #endregion
 
         public MovieDetailsPageModel(
             NavigationContext navigationContext)
             : base(navigationContext)
         {
+            // Init command
             CloseCommand = new AsyncCommand(Perform_Close);
         }
 
-        public override async void OnAppearing(object sender, EventArgs e)
+        public override void OnAppearing(object sender, EventArgs e)
         {
             base.OnAppearing(sender, e);
 
+            // Every time when the screen, is appearing the movie data is assigned to each property
             MovieTitle = CurrentMovie.Movie.Title;
             MovieOverview = CurrentMovie.Movie.Overview;
             CoverPath = CurrentMovie.Movie.PosterPath;
@@ -58,7 +59,6 @@ namespace SpectrumTV.PageModels
             // Dismiss modal
             return NavigationContext.PopModalAsync();
         }
-
 
     }
 

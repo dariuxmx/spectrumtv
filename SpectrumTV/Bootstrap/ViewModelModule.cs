@@ -9,6 +9,7 @@ namespace SpectrumTV.Modules
         {
             base.Load(builder);
 
+            // All viewModels should be register here
             builder.RegisterType<InitViewModel>();
             builder.RegisterType<MovieItemViewModel>();
         }

@@ -3,6 +3,14 @@ using Xamarin.Forms;
 
 namespace SpectrumTV.Effects
 {
+    /// <summary>
+    /// Use this effect to handle the space around the screen.
+    /// Example of use in xaml:
+    /// <ContentView.Effects>
+    ///     <effects:SafeAreaPaddingEffectFlags = "Top" />
+    /// </ContentView.Effects>
+    /// </summary>
+    
     public class SafeAreaEffect : RoutingEffect
     {
         public const string EFFECT_NAME = "SafeAreaEffect";
