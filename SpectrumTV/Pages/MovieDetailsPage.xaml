@@ -1,88 +1,62 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:SpectrumTV.Templates"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SpectrumTV.Pages.MovieDetailsPage"
-    xmlns:effects="clr-namespace:SpectrumTV.Effects"
+    xmlns:link="clr-namespace:SpectrumTV"
     xmlns:iosSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    iosSpecific:Page.UseSafeArea="True"
-    Background="white"
-    Title="Spectrum TV">
-    <ContentPage.Content>
-        <Grid
-            RowSpacing="0"
-            ColumnSpacing="0"
+    NavigationPage.HasBackButton="False"
+    iosSpecific:Page.UseSafeArea="False"
+    NavigationPage.HasNavigationBar="False"
+    Background="white">
+    <StackLayout>
+        <!-- Content -->
+        <ScrollView
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="230" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <!-- Safe Area -->
-            <!--<ContentView
-                Grid.Row="0"
-                Grid.Column="0"
+            <Grid
+                RowSpacing="0"
+                ColumnSpacing="0"
                 HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand"
-                HeightRequest="30"
-                BackgroundColor="Transparent">
-                <ContentView.Effects>
-                    <effects:SafeAreaEffect Flags="Top" />
-                </ContentView.Effects>
-            </ContentView>-->
-            
+                VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-            <!--Cover-->
-            <!--<Label
-                Grid.Row="1"
-                Margin="15,0,0,0"
-                FontSize="30"
-                FontAttributes="Bold"
-                TextColor="{DynamicResource PrimaryColor}"
-                Text="Upcoming"/>-->
+                <StackLayout
+                    Margin="0,-50,0,0"
+                    Grid.Row="0">
+                    <Image
+                        HorizontalOptions="FillAndExpand"
+                        HeightRequest="600"
+                        Source="{Binding CoverPath, Converter={StaticResource MovieCoverConverter}}"
+                        Aspect="Fill" />
 
-            <!--Title Section-->
-            <!--<Label
-                Grid.Row="2"
-                FontSize="30"
-                FontAttributes="Bold"
-                TextColor="{DynamicResource PrimaryColor}"
-                Margin="15,0,0,0"
-                Text="Top Rated Movies"/>-->
+                    <Label
+                        Margin="20,20,20,0"
+                        FontSize="35"
+                        TextColor="{DynamicResource PrimaryColor}"
+                        Text="{Binding MovieTitle}"/>
 
-            
-            <ScrollView
-                Grid.Row="0"
-                VerticalOptions="FillAndExpand"
-                HorizontalOptions="FillAndExpand"
-                Background="GreenYellow">
-                <Image
-                    HorizontalOptions="FillAndExpand"
-                    HeightRequest="400"
-                    Source="{Binding CoverPath, Converter={StaticResource MovieCoverConverter}}"
-                    Aspect="AspectFit" />
-                <!--<FlexLayout
-                    BindableLayout.ItemsSource="{Binding ResultsTopMoviesRated}"
-                    Wrap="Wrap"
-                    Direction="Row"
-                    JustifyContent="SpaceBetween"
-                    AlignItems="Center"                            
-                    AlignContent="Center"
-                    Padding="20,0">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout Orientation="Horizontal">
-                                <views:MovieItemView
-                                    WidthRequest="120"
-                                    HorizontalOptions="CenterAndExpand"/>
-                            </StackLayout>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </FlexLayout>-->
-            </ScrollView>
-        </Grid>
-    </ContentPage.Content>
+                    <Label
+                        Margin="20,20"
+                        FontSize="15"
+                        LineHeight="1.2"
+                        TextColor="{DynamicResource SecondaryColor}"
+                        Text="{Binding MovieOverview}"/>
+                </StackLayout>
+
+                <!-- Close Button -->
+                <Button
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    Padding="10"
+                    Margin="0,20,0,0"
+                    Background="transparent"
+                    ImageSource="{x:Static link:AppImages.IconClose}"
+                    Command="{Binding CloseCommand}"/>
+              
+            </Grid>
+        </ScrollView>
+    </StackLayout>
 </ContentPage>

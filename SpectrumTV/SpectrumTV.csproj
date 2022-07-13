@@ -26,6 +26,7 @@
     <None Remove="Templates\" />
     <None Remove="Effects\" />
     <None Remove="Converters\" />
+    <None Remove="Views\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Bootstrap\" />
@@ -37,6 +38,7 @@
     <Folder Include="Templates\" />
     <Folder Include="Effects\" />
     <Folder Include="Converters\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SpectrumTV.Services\SpectrumTV.Services.csproj" />

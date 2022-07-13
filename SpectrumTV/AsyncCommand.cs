@@ -37,9 +37,6 @@ namespace SpectrumTV
 
         private CancellationTokenSource _commandCts;
 
-        // DELETE
-        private Action<CancellationToken> perform_Back_To_ScanCoil;
-
         public bool IsExecuting { get; private set; }
 
         public event EventHandler CanExecuteChanged;
@@ -55,12 +52,6 @@ namespace SpectrumTV
         public AsyncCommand(Func<CancellationToken, Task> command, TimeSpan timeout = default, Func<bool> canExecute = null) :
             this((obj, cancellationToken) => command(cancellationToken), timeout, obj => canExecute == null || canExecute())
         { }
-
-        // DELETE
-        public AsyncCommand(Action<CancellationToken> perform_Back_To_ScanCoil)
-        {
-            this.perform_Back_To_ScanCoil = perform_Back_To_ScanCoil;
-        }
 
         public bool CanExecute(object parameter)
         {

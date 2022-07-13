@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:SpectrumTV.Templates"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:SpectrumTV.Templates"
     x:Class="SpectrumTV.Pages.HomePage"
+    xmlns:link="clr-namespace:SpectrumTV"
     xmlns:effects="clr-namespace:SpectrumTV.Effects"
     xmlns:iosSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     iosSpecific:Page.UseSafeArea="True"
@@ -16,6 +18,7 @@
             VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" /> <!-- Safe Area -->
+                <RowDefinition Height="60" /> <!-- Logo -->
                 <RowDefinition Height="230" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -34,10 +37,24 @@
                 </ContentView.Effects>
             </ContentView>
 
+            <StackLayout
+                Grid.Row="1"
+                Padding="0">
+                <AbsoluteLayout
+                    Margin="5,0">
+                    <Image
+                        x:Name="_logo"
+                        Aspect="AspectFit"
+                        WidthRequest="170"
+                        HeightRequest="70"
+                        Source="{x:Static link:AppImages.LogoNav}" />
+                </AbsoluteLayout>
+            </StackLayout>
+
             <!--Cover-->
             <Label
-                Grid.Row="1"
-                Margin="15,0,0,0"
+                Grid.Row="2"
+                Margin="15,20,0,0"
                 FontSize="30"
                 FontAttributes="Bold"
                 TextColor="{DynamicResource PrimaryColor}"
@@ -45,15 +62,15 @@
 
             <!--Title Section-->
             <Label
+                Grid.Row="3"
                 FontSize="30"
                 FontAttributes="Bold"
                 TextColor="{DynamicResource PrimaryColor}"
-                Grid.Row="2"
                 Margin="15,0,0,0"
                 Text="Top Rated Movies"/>
 
             <CollectionView
-                Grid.Row="3"
+                Grid.Row="4"
                 x:Name="CollectionList"
                 ItemsSource="{Binding ResultsTopMoviesRated, Mode=TwoWay}"
                 Margin="0,15"

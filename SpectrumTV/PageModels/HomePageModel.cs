@@ -57,7 +57,7 @@ namespace SpectrumTV.PageModels
 
         private async Task Perform_View_Movie_Details(object sender, CancellationToken cancellationToken)
         {
-            await NavigationContext.PushAsync<MovieDetailsPageModel>(pageModel =>
+            await NavigationContext.PushModalAsync<MovieDetailsPageModel>(pageModel =>
             {
                 pageModel.CurrentMovie = (MovieItemViewModel)sender;
             });

@@ -35,14 +35,14 @@ namespace SpectrumTV.PageModels
         #endregion
 
         public MovieItemViewModel CurrentMovie { get; set; }
+        public AsyncCommand CloseCommand { get; private set; }
 
         public MovieDetailsPageModel(
             NavigationContext navigationContext)
             : base(navigationContext)
         {
-            IsBusy = true;
+            CloseCommand = new AsyncCommand(Perform_Close);
         }
-
 
         public override async void OnAppearing(object sender, EventArgs e)
         {
@@ -52,6 +52,13 @@ namespace SpectrumTV.PageModels
             MovieOverview = CurrentMovie.Movie.Overview;
             CoverPath = CurrentMovie.Movie.PosterPath;
         }
+
+        private Task Perform_Close(CancellationToken cancellationToken)
+        {
+            // Dismiss modal
+            return NavigationContext.PopModalAsync();
+        }
+
 
     }
 

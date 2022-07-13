@@ -16,7 +16,7 @@ namespace SpectrumTV.Converters
             }
             else
             {
-                return string.Format("{0}{1}", AppConfig.ThumbnailUrl, value);
+                return string.Format("{0}{1}", AppConfig.CoverImageUrl, value);
             }
         }
 
