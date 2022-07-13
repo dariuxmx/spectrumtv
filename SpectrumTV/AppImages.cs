@@ -12,5 +12,6 @@ namespace SpectrumTV
     {
         public const string LogoNav = "logo_nav";
         public const string IconClose = "icon_close";
+        public const string IconSearch = "icon_search";
     }
 }

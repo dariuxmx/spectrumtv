@@ -21,9 +21,8 @@
                 VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" /> <!-- Safe Area -->
-                    <RowDefinition Height="60" /> <!-- Logo -->
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="230" /> <!--Cover-->
+                    <RowDefinition Height="60" /> <!-- Logo and search button -->
+                    <RowDefinition Height="Auto" /> <!-- Cover -->
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -47,32 +46,47 @@
                     Grid.Row="1"
                     Padding="0">
                     <AbsoluteLayout
-                        Margin="5,0">
+                        Margin="12,0">
                         <Image
                             x:Name="_logo"
                             Aspect="AspectFit"
-                            WidthRequest="170"
-                            HeightRequest="70"
+                            AbsoluteLayout.LayoutBounds="0,0,170,70"
                             Source="{x:Static link:AppImages.LogoNav}" />
                     </AbsoluteLayout>
+
+                    <Button
+                        HorizontalOptions="End"
+                        WidthRequest="30"
+                        Padding="0"
+                        Margin="0,-65,15,0"
+                        Command="{Binding SearchCommand}"
+                        ImageSource="{x:Static link:AppImages.IconSearch}"/>
                 </StackLayout>
 
                 <!--Cover-->
-                <Label
+                <StackLayout
                     Grid.Row="2"
-                    Margin="15,20,0,0"
-                    FontSize="30"
-                    FontAttributes="Bold"
-                    TextColor="{DynamicResource PrimaryColor}"
-                    Text="Trending"/>
-
-                <Image
-                    Grid.Row="3"
-                    Margin="0, 15,0,20"
-                    HorizontalOptions="FillAndExpand"
-                    HeightRequest="600"
-                    Source="{Binding MovieCoverTrend}"
-                    Aspect="AspectFill" />
+                    Padding="20">
+                    <Label
+                        Margin="0,20,0,0"
+                        FontSize="30"
+                        FontAttributes="Bold"
+                        TextColor="{DynamicResource PrimaryColor}"
+                        Text="Trending"/>
+                    <Frame
+                        CornerRadius="7"
+                        HasShadow="False"
+                        Margin="0,15,0,20"
+                        IsClippedToBounds="True"
+                        Padding="0">
+                        <Image
+                            Grid.Row="3"
+                            HorizontalOptions="FillAndExpand"
+                            HeightRequest="500"
+                            Source="{Binding MovieCoverTrend}"
+                            Aspect="AspectFill" />
+                    </Frame>
+                </StackLayout>
 
                 <!--Upcoming Movies Section-->
                 <Label

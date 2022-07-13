@@ -41,6 +41,7 @@ namespace SpectrumTV.Bootstrap
             // All pages with their pageModel should be register here
             pageFactory.Register<HomePageModel, HomePage>();
             pageFactory.Register<MovieDetailsPageModel, MovieDetailsPage>();
+            pageFactory.Register<SearchResultsPageModel, SearchResultsPage>();
         }
     }
 }

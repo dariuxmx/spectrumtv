@@ -12,6 +12,7 @@ namespace SpectrumTV.Modules
             // All pages should be register here
             builder.RegisterType<HomePage>();
             builder.RegisterType<MovieDetailsPage>();
+            builder.RegisterType<SearchResultsPage>();
         }
     }
 }

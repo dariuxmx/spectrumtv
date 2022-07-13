@@ -38,6 +38,7 @@ namespace SpectrumTV.PageModels
 
         #region Commands
         public AsyncCommand ShowDetailsCommand { get; private set; }
+        public AsyncCommand SearchCommand { get; private set; }
         #endregion
 
         public HomePageModel(
@@ -51,11 +52,11 @@ namespace SpectrumTV.PageModels
 
             // Init command
             ShowDetailsCommand = new AsyncCommand(Perform_View_Movie_Details);
+            SearchCommand = new AsyncCommand(Perform_Open_Search_Screen);
 
             // Show the activity loader
             IsBusy = true;
         }
-
 
         public override async void OnAppearing(object sender, EventArgs e)
         {
@@ -106,6 +107,8 @@ namespace SpectrumTV.PageModels
             }
         }
         #endregion
+
+        #region Methods for commands
         private async Task Perform_View_Movie_Details(object sender, CancellationToken cancellationToken)
         {
             // Show the modal screen
@@ -115,5 +118,12 @@ namespace SpectrumTV.PageModels
                 pageModel.CurrentMovie = (MovieItemViewModel)sender;
             });
         }
+
+        private async Task Perform_Open_Search_Screen(object sender, CancellationToken cancellationToken)
+        {
+            // Show the modal screen
+            await NavigationContext.PushModalAsync<SearchResultsPageModel>();
+        }
+        #endregion
     }
 }

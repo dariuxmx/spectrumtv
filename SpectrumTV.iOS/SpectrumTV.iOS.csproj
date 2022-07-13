@@ -119,6 +119,8 @@
     <ImageAsset Include="Assets.xcassets\logo_nav.imageset\Spectrum_Logo_4C.pdf" />
     <ImageAsset Include="Assets.xcassets\icon_close.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\icon_close.imageset\icon-close.pdf" />
+    <ImageAsset Include="Assets.xcassets\icon_search.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon_search.imageset\icon_search.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -151,5 +153,6 @@
     <Folder Include="Effects\" />
     <Folder Include="Assets.xcassets\logo_nav.imageset\" />
     <Folder Include="Assets.xcassets\icon_close.imageset\" />
+    <Folder Include="Assets.xcassets\icon_search.imageset\" />
   </ItemGroup>
 </Project>
