@@ -6,7 +6,7 @@ namespace SpectrumTV.Services.ApiService
     /// <summary>
     /// Interface methods to api calls
     /// </summary>
-    /// 
+
     public interface IApiService
     {
         Task<TResult> GetAsync<TResult>(string uri);
